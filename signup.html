@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Username • Instagram</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* 🔹 Top bar */
+  .top-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .back-arrow {
+    font-size: 32px;
+    font-weight: 100;
+    cursor: pointer;
+  }
+
+  /* 🔹 Main container */
+  .container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin-top: 100px;
+  }
+
+  .container h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .container p {
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  /* 🔹 Input */
+  .input-box {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 15px;
+  }
+
+  .input-box:focus {
+    border-color: #1877F2;
+  }
+
+  /* 🔹 Next button */
+  .next-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    background-color: #b3d7ff;
+    color: #fff;
+    font-weight: 600;
+    cursor: not-allowed;
+    transition: background-color 0.3s;
+  }
+
+  .next-btn.active {
+    background-color: #1877F2;
+    cursor: pointer;
+  }
+
+  /* 🔹 Bottom gray line */
+  .bottom-bar {
+    width: 35%;
+    height: 4px;
+    background-color: #bbb;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+</head>
+<body>
+
+  <!-- 🔹 Top Bar -->
+  <div class="top-bar">
+    <div class="back-arrow" onclick="goBack()">&#10005;</div>
+  </div>
+
+  <!-- 🔹 Main Container -->
+  <div class="container">
+    <h1>Choose username</h1>
+    <p>You can always change it later.</p>
+
+    <input type="text" id="username" class="input-box" placeholder="Username" autocomplete="off">
+
+    <button id="nextBtn" class="next-btn" disabled>Next</button>
+  </div>
+
+  <div class="bottom-bar"></div>
+
+  <script>
+    // ✅ Go directly to index.html on back arrow click
+    function goBack() {
+      window.location.href = "index.html";
+    }
+
+    const input = document.getElementById("username");
+    const nextBtn = document.getElementById("nextBtn");
+
+    input.addEventListener("input", () => {
+      if (input.value.trim().length > 0) {
+        nextBtn.classList.add("active");
+        nextBtn.disabled = false;
+      } else {
+        nextBtn.classList.remove("active");
+        nextBtn.disabled = true;
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (input.value.trim() !== "") {
+        window.location.href = "create-password.html";
+      }
+    });
+  </script>
+
+</body>
+</html>

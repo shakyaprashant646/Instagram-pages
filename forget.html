@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Account</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  /* 🔹 Top bar */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  .back-arrow {
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* 🔹 Heading section */
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #333;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .link-text {
+    color: #1877F2;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    cursor: pointer;
+  }
+
+  /* 🔹 Input */
+  .input-box {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    outline: none;
+  }
+
+  /* 🔹 Buttons */
+  .continue-btn {
+    width: 100%;
+    background-color: #1877F2;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+  .continue-btn:hover {
+    background-color: #1558C5;
+  }
+
+  .search-btn {
+    width: 100%;
+    background-color: transparent;
+    color: #000;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .search-btn:hover {
+    background-color: #f5f5f5;
+  }
+</style>
+</head>
+<body>
+
+  <!-- 🔹 Top Bar -->
+  <div class="top-bar">
+    <!-- Back arrow goes to login page -->
+    <div class="back-arrow" onclick="window.location.href='index.html'">←</div>
+  </div>
+
+  <!-- 🔹 Content -->
+  <h2>Find your account</h2>
+  <p>Enter your email address or username.</p>
+  <div class="link-text">Can’t reset your password?</div>
+
+  <input type="text" id="inputField" class="input-box" placeholder="Email address or username" />
+
+  <button class="continue-btn" onclick="alert('Continue pressed 🚀')">Continue</button>
+  <button class="search-btn" id="toggleButton">Search by mobile number instead</button>
+
+  <script>
+    const inputField = document.getElementById("inputField");
+    const toggleButton = document.getElementById("toggleButton");
+    let usingMobile = false;
+
+    toggleButton.addEventListener("click", () => {
+      usingMobile = !usingMobile;
+
+      if (usingMobile) {
+        inputField.placeholder = "Mobile number";
+        toggleButton.textContent = "Search by email address instead";
+      } else {
+        inputField.placeholder = "Email address or username";
+        toggleButton.textContent = "Search by mobile number instead";
+      }
+    });
+  </script>
+
+</body>
+</html>
